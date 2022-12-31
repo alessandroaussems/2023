@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-title" content="" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="description" content="2023" />
+
+	<meta property="og:title" content="2023" />
+	<meta property="og:site_name" content="2023" />
+	<meta property="og:description" content="2023" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="http://icon.png" />
+
+	<meta property="twitter:card" content="summary" />
+	<meta property="twitter:title" content="2023" />
+	<meta property="twitter:description" content="2023" />
+	<meta property="twitter:image" content="http://icon.png" />
+
+  <title>2023 🎉</title>
+  <link rel="icon" type="image/jpg" href="http://icon.png"/>
+  <link rel="apple-touch-icon" href="icon.jpg">
+  <style>
+  html, body {
+    margin: 0 auto;
+    background-image: url("bg.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+  #countdown {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 10vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: table;
+    transform: translateX(-50%) translateY(-50%);
+    color: black;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  #countdown.loaded {
+    opacity: 1;
+  }
+  </style>
+</head>
+<body>
+  <p id="countdown"></p>
+  <script>
+  let countDownDate = new Date('Jan 1, 2023 00:00:00').getTime();
+  let  countDownElement = document.getElementById('countdown');
+  let x = setInterval(function() {
+    let now = new Date().getTime();
+    let distance = countDownDate - now;
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if(seconds<10) {
+      seconds="0" + seconds;
+    }
+    if(minutes<10) {
+      minutes="0" + minutes;
+    }
+    if(hours<10) {
+      hours="0"+hours;
+    }
+
+    countDownElement.innerHTML = hours + "h "+ minutes + "m " + seconds + "s ";
+
+    if(!countDownElement.classList.contains('loaded')) {
+      countDownElement.classList.add('loaded');
+    }
+
+    if (distance < 0) {
+      clearInterval(x);
+      countDownElement.innerHTML = "2023!";
+    }
+  }, 1000);
+  </script>
+</body>
+</html>
+
